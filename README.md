@@ -1,12 +1,16 @@
-# React Movies
+# React Query Movies
 
-A web app for searching movies by keyword, powered by the TMDB API.
+A web app for searching movies by keyword, powered by the TMDB API. Server data is handled with
+TanStack Query, and search results are split into pages.
 
-[Live demo](https://03-react-movies-rho-gilt.vercel.app)
+[Live demo](https://04-react-query-ecru-ten.vercel.app/)
 
 ## Features
 
 - Search movies by keyword
+- Paginated results with React Paginate
+- Cached requests: previously opened pages load instantly
+- Previous page stays on screen while the next one loads
 - Movie gallery with posters and titles
 - Modal window with overview, release date and rating
 - Loading indicator, error message and notifications
@@ -14,7 +18,9 @@ A web app for searching movies by keyword, powered by the TMDB API.
 ## Tech stack
 
 - React 19, TypeScript, Vite
+- TanStack Query (React Query) and React Query Devtools
 - Axios
+- React Paginate
 - React Hot Toast
 - CSS Modules, modern-normalize
 
@@ -25,8 +31,8 @@ Requirements: Node.js 20.19+, 22.13+ or 24+.
 1. Clone the repository and install dependencies:
 
    ```bash
-   git clone https://github.com/RuslanMirasov/03-react-movies.git
-   cd 03-react-movies
+   git clone https://github.com/RuslanMirasov/04-react-query.git
+   cd 04-react-query
    npm install
    ```
 
@@ -63,21 +69,16 @@ Requirements: Node.js 20.19+, 22.13+ or 24+.
 ```text
 src/
 ├── components/
-│   ├── App/            # state and data fetching
+│   ├── App/            # search state, useQuery, pagination
 │   ├── SearchBar/      # search form
 │   ├── MovieGrid/      # movie gallery
 │   ├── MovieModal/     # movie details modal
 │   ├── Loader/         # loading indicator
 │   └── ErrorMessage/   # request error message
 ├── services/
-│   └── movieService.ts # TMDB request
+│   └── movieService.ts # TMDB request with query and page
 ├── types/
-│   └── movie.ts        # Movie interface
-├── main.tsx            # entry point
+│   └── movie.ts        # Movie and MoviesResponse interfaces
+├── main.tsx            # entry point, QueryClientProvider
 └── vite-env.d.ts       # environment variable types
 ```
-
-## Credits
-
-Data and images are provided by [TMDB](https://www.themoviedb.org/). This product uses the TMDB API
-but is not endorsed or certified by TMDB.
